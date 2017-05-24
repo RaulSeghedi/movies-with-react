@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class MovieItem extends Component {
     render() {
         return (
             <div>
-                {this.props.movie.title}<br/>
-                Year: {this.props.movie.year}<br/><br/>
+                <div>
+                    {this.props.movie.title}
+                </div>
+                <div>
+                    Year: {this.props.movie.year}
+                </div>
             </div>
         );
     }
