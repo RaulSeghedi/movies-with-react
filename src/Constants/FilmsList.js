@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
 import uuid from 'uuid';
-import MoviesList from '../Components/MoviesList';
 
-const movies = [
+export const movies = [
     {
         id: uuid.v4(),
         title: 'World War Z',
@@ -43,16 +41,5 @@ const movies = [
         title: 'Up',
         year: 2009
     }
+
 ];
-
-class FilmsList extends Component {
-    render() {
-        return (
-            <div>
-                <MoviesList movies={movies}/>
-            </div>
-        );
-    }
-}
-
-export default FilmsList;

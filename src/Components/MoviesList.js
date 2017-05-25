@@ -1,29 +1,16 @@
 import React, {Component} from 'react';
 import MovieItem from './MovieItem';
+import {movies} from '../Constants/FilmsList';
 
 class MoviesList extends Component {
-    constructor() {
-        super();
-        this.state = {
-            search: ''
-        }
-    }
-
-    searchMovie(event) {
-        this.setState({search: event.target.value})
-    }
-
     render() {
-        let searchStyle = {
-            color: 'blue'
-        };
-
-        let filterMovies = this.props.movies.filter((movie) => {
-            return movie.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1; // -1 = any value that it can not find
+        //console.log(movies);
+        let filterMovies = movies.filter((movie) => {
+            return movie.title.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1; // -1 = any value that it can not find
         });
 
         let moviesItems;
-        if (this.props.movies) {
+        if (movies && movies.length > 0) {
             moviesItems = filterMovies.map((movie) => {
                 return (
                     <MovieItem movie={movie} key={movie.id}/>
@@ -32,15 +19,6 @@ class MoviesList extends Component {
         }
         return (
             <div>
-                <div>
-                    <h3 style={searchStyle}>Looking for a specific movie ?</h3>
-                    <input type="text"
-                           placeholder="Search ..."
-                           value={this.state.search}
-                           onChange={this.searchMovie.bind(this)}
-                    />
-                </div>
-                <br/>
                 {moviesItems}
             </div>
         );
