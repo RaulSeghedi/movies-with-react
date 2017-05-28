@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Search.css';
 
 class Search extends Component {
     constructor(props) {
@@ -14,16 +15,14 @@ class Search extends Component {
     }
 
     render() {
-        let searchStyle = {
-            color: 'blue'
-        };
         return (
-            <div>
-                <h3 style={searchStyle}>Looking for a specific movie ?</h3>
+            <div className="search">
+                <h3 className="header">Looking for a specific movie ?</h3>
                 <input type="text"
-                       placeholder="Search ..."
+                       placeholder="Search movies ..."
                        value={this.state.search}
                        onChange={this.searchMovie.bind(this)}
+                       className="input"
                 />
             </div>
         );

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Search from './Components/Search';
 import MoviesList from './Components/MoviesList';
 import {movies} from './Constants/FilmsList';
+import './App.css';
 
 class App extends Component {
     constructor(props) {
@@ -22,11 +23,11 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <h1>Movies with React</h1>
+            <div className="movies">
+                <div className="header-one">
+                    <h3>Movies with React</h3>
                 </div>
-                <div>
+                <div className="header-two">
                     <h3>List of Movies</h3>
                 </div>
                 <div>

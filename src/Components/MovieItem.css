@@ -1,0 +1,23 @@
+
+.movie{
+     padding: 10px 20px 10px 20px;
+     border: groove;
+     width: 300px;
+     border-radius: 10px;
+ }
+
+.title{
+    height: auto;
+    width: auto;
+    color: black;
+}
+
+.genre{
+    color: grey;
+    font-size: 75%;
+}
+
+.detail{
+    color: grey;
+    font-size: 75%;
+}
