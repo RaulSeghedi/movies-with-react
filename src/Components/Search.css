@@ -1,6 +1,5 @@
 .header{
     color: black;
-    font-family: "Times New Roman";
     font-size: 120%;
     font-weight: bold;
     text-align: center;
@@ -13,7 +12,7 @@
 }
 
 .search{
-    padding: 10px 20px 10px 20px;
+    padding: 10px 5px 10px 5px;
     border: groove;
     width: 300px;
     height: auto;

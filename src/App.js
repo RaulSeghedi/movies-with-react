@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Search from './Components/Search';
 import MoviesList from './Components/MoviesList';
+import AddMovie from './Components/AddMovie';
 import {movies} from './Constants/FilmsList';
 import './App.css';
 
@@ -8,8 +9,14 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            filterMovies: movies
+            filterMovies: []
         }
+    }
+
+    componentWillMount() {
+        this.setState({
+            filterMovies: movies
+        })
     }
 
     handleMovieFilter(title) {
@@ -21,6 +28,18 @@ class App extends Component {
         });
     }
 
+    handleAddMovie(input) {
+        this.state.filterMovies.push(input);
+        this.setState({filterMovies: this.state.filterMovies});
+    }
+
+    handleDelete(id) {
+        let movie = this.state.filterMovies;
+        let index = movie.findIndex(x => x.id === id);
+        movie.splice(index, 1);
+        this.setState({filterMovies: this.state.filterMovies});
+    }
+
     render() {
         return (
             <div className="movies">
@@ -30,10 +49,9 @@ class App extends Component {
                 <div className="header-two">
                     <h3>List of Movies</h3>
                 </div>
-                <div>
-                    <Search handleMovieFilter={this.handleMovieFilter.bind(this)}/>
-                    <MoviesList filterMovies={this.state.filterMovies}/>
-                </div>
+                <Search handleMovieFilter={this.handleMovieFilter.bind(this)}/>
+                <AddMovie handleAddMovie={this.handleAddMovie.bind(this)}/>
+                <MoviesList filterMovies={this.state.filterMovies} handleDelete={this.handleDelete.bind(this)}/>
             </div>
         );
     }

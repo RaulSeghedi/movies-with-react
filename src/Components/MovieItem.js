@@ -14,8 +14,13 @@ class MovieItem extends Component {
                 <div className="detail">
                     Year: {this.props.movie.year}
                 </div>
+                <a href="#" onClick={this.deleteMovie.bind(this, this.props.movie.id)}>DELETE</a>
             </div>
         );
+    }
+
+    deleteMovie(id){
+        this.props.onDelete(id);
     }
 }
 

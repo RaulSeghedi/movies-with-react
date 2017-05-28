@@ -8,7 +8,7 @@ class MoviesList extends Component {
         if (movies && movies.length > 0) {
             moviesItems = this.props.filterMovies.map((movie) => {
                 return (
-                    <MovieItem movie={movie} key={movie.id}/>
+                    <MovieItem movie={movie} key={movie.id} onDelete={this.onDelete.bind(this)}/>
                 )
             })
         }
@@ -17,6 +17,10 @@ class MoviesList extends Component {
                 {moviesItems}
             </div>
         );
+    }
+
+    onDelete(id){
+        this.props.handleDelete(id);
     }
 }
 

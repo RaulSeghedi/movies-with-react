@@ -1,8 +1,8 @@
 .movies{
-    margin: auto;
     padding: 10px;
     width: 300px;
     height: auto;
+    margin: auto;
 }
 
 .header-one{
@@ -16,3 +16,4 @@
     margin-top: 10%;
     text-align: center;
 }
+
