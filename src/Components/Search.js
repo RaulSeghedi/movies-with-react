@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import MoviesList from './MoviesList';
 
 class Search extends Component {
     constructor(props) {
@@ -10,7 +9,8 @@ class Search extends Component {
     }
 
     searchMovie(event) {
-        this.setState({search: event.target.value})
+        this.setState({search: event.target.value});
+        this.props.handleMovieFilter(event.target.value);
     }
 
     render() {
@@ -19,18 +19,16 @@ class Search extends Component {
         };
         return (
             <div>
-                <div>
-                    <h3 style={searchStyle}>Looking for a specific movie ?</h3>
-                    <input type="text"
-                           placeholder="Search ..."
-                           value={this.state.search}
-                           onChange={this.searchMovie.bind(this)}
-                    />
-                </div>
-                <MoviesList search={this.state.search}/>
+                <h3 style={searchStyle}>Looking for a specific movie ?</h3>
+                <input type="text"
+                       placeholder="Search ..."
+                       value={this.state.search}
+                       onChange={this.searchMovie.bind(this)}
+                />
             </div>
         );
     }
+
 }
 
 export default Search;

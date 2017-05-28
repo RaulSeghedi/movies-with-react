@@ -41,5 +41,4 @@ export const movies = [
         title: 'Up',
         year: 2009
     }
-
 ];
