@@ -8,10 +8,10 @@ class MovieItem extends Component {
                 <div className="title">
                     {this.props.movie.title}
                 </div>
-                <div className="genre">
+                <div className="details">
                     Genre: {this.props.movie.genre}
                 </div>
-                <div className="detail">
+                <div className="details">
                     Year: {this.props.movie.year}
                 </div>
                 <a href="#" onClick={this.deleteMovie.bind(this, this.props.movie.id)}>DELETE</a>

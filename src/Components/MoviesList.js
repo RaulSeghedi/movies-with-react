@@ -19,7 +19,7 @@ class MoviesList extends Component {
         );
     }
 
-    onDelete(id){
+    onDelete(id) {
         this.props.handleDelete(id);
     }
 }

@@ -12,16 +12,7 @@
     color: black;
 }
 
-.genre{
+.details{
     color: grey;
     font-size: 75%;
-}
-
-.detail{
-    color: grey;
-    font-size: 75%;
-}
-
-a{
-    margin-right: 1px;
 }

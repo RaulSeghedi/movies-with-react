@@ -1,3 +1,4 @@
+
 .header{
     color: black;
     font-size: 120%;
@@ -8,16 +9,13 @@
 .input {
     border-radius: 7px;
     width: 100%;
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 .search{
     padding: 10px 5px 10px 5px;
     border: groove;
     width: 300px;
-    height: auto;
     border-radius: 5px;
     margin-bottom: 20px;
-    margin-top: 10%;
-    text-align: center;
 }

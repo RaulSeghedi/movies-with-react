@@ -24,7 +24,7 @@ class App extends Component {
             return movie.title.toLowerCase().indexOf(title.toLowerCase()) !== -1; // -1 = any value that it can not find
         });
         this.setState({
-            filterMovies
+            filterMovies: filterMovies
         });
     }
 
@@ -42,19 +42,26 @@ class App extends Component {
 
     render() {
         return (
-            <div className="movies">
-                <div className="header-one">
-                    <h3>Movies with React</h3>
+            <div>
+                <div className="headers">
+                    <div>
+                        <h3>Movies with React</h3>
+                    </div>
+                    <div>
+                        <h3>List of Movies</h3>
+                    </div>
                 </div>
-                <div className="header-two">
-                    <h3>List of Movies</h3>
+                <div className="main">
+                    <div>
+                        <Search handleMovieFilter={this.handleMovieFilter.bind(this)}/>
+                        <MoviesList filterMovies={this.state.filterMovies} handleDelete={this.handleDelete.bind(this)}/>
+                    </div>
+                    <div>
+                        <AddMovie handleAddMovie={this.handleAddMovie.bind(this)}/>
+                    </div>
                 </div>
-                <Search handleMovieFilter={this.handleMovieFilter.bind(this)}/>
-                <AddMovie handleAddMovie={this.handleAddMovie.bind(this)}/>
-                <MoviesList filterMovies={this.state.filterMovies} handleDelete={this.handleDelete.bind(this)}/>
             </div>
         );
     }
 }
-
 export default App;
