@@ -2,42 +2,59 @@ import React, {Component} from 'react';
 import Search from './Components/Search';
 import MoviesList from './Components/MoviesList';
 import AddMovie from './Components/AddMovie';
-import {movies} from './Constants/FilmsList';
+//import {movies} from './Constants/FilmsList';
 import './App.css';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             filterMovies: []
         }
     }
 
     componentWillMount() {
-        this.setState({
-            filterMovies: movies
-        })
+        // this.setState({
+        //     filterMovies: movies
+        // })
+        let movie = localStorage.getItem('storedMovie');
+        if (movie){
+            this.setState({
+                // parse - takes a JSON string and converts it to a JavaScript object (opposite to stringify)
+                filterMovies: JSON.parse(movie)
+            })
+        }
     }
 
     handleMovieFilter(title) {
-        let filterMovies = movies.filter((movie) => {
+        let test = this.state.filterMovies;
+        let filterMovies = test.filter((movie) => {
             return movie.title.toLowerCase().indexOf(title.toLowerCase()) !== -1; // -1 = any value that it can not find
         });
-        this.setState({
-            filterMovies: filterMovies
-        });
+        this.setState({filterMovies: filterMovies});
+        // this.updateLocalStorage(filterMovies);
     }
 
     handleAddMovie(input) {
-        this.state.filterMovies.push(input);
-        this.setState({filterMovies: this.state.filterMovies});
+        let movie = this.state.filterMovies;
+        movie.push(input);
+        this.updateLocalStorage(movie);
+        this.setState({filterMovies: movie});
     }
 
     handleDelete(id) {
         let movie = this.state.filterMovies;
         let index = movie.findIndex(x => x.id === id);
         movie.splice(index, 1);
+        this.updateLocalStorage(movie);
         this.setState({filterMovies: this.state.filterMovies});
+    }
+
+    updateLocalStorage(data){
+        // convert the movies array into a string
+        let myList = JSON.stringify(data);
+        // save it to localStorage
+        localStorage.setItem('storedMovie', myList);
     }
 
     render() {
