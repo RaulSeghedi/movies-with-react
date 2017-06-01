@@ -18,7 +18,7 @@ class App extends Component {
         //     filterMovies: movies
         // })
         let movie = localStorage.getItem('storedMovie');
-        if (movie){
+        if (movie) {
             this.setState({
                 // parse - takes a JSON string and converts it to a JavaScript object (opposite to stringify)
                 filterMovies: JSON.parse(movie)
@@ -27,12 +27,11 @@ class App extends Component {
     }
 
     handleMovieFilter(title) {
-        let test = this.state.filterMovies;
-        let filterMovies = test.filter((movie) => {
+        let movie = JSON.parse(localStorage.getItem('storedMovie'));
+        let filterMovies = movie.filter((movie) => {
             return movie.title.toLowerCase().indexOf(title.toLowerCase()) !== -1; // -1 = any value that it can not find
         });
         this.setState({filterMovies: filterMovies});
-        // this.updateLocalStorage(filterMovies);
     }
 
     handleAddMovie(input) {
@@ -43,14 +42,14 @@ class App extends Component {
     }
 
     handleDelete(id) {
-        let movie = this.state.filterMovies;
+        let movie = JSON.parse(localStorage.getItem('storedMovie'));
         let index = movie.findIndex(x => x.id === id);
         movie.splice(index, 1);
         this.updateLocalStorage(movie);
-        this.setState({filterMovies: this.state.filterMovies});
+        this.setState({filterMovies: movie});
     }
 
-    updateLocalStorage(data){
+    updateLocalStorage(data) {
         // convert the movies array into a string
         let myList = JSON.stringify(data);
         // save it to localStorage
