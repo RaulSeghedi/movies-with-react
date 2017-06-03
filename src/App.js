@@ -3,6 +3,7 @@ import Search from './Components/Search';
 import MoviesList from './Components/MoviesList';
 import AddMovie from './Components/AddMovie';
 //import {movies} from './Constants/FilmsList';
+import RealDataMovieList from './Components/RealDataMovieList';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +11,7 @@ class App extends Component {
         super();
         this.state = {
             filterMovies: []
-        }
+        };
     }
 
     componentWillMount() {
@@ -74,6 +75,10 @@ class App extends Component {
                     </div>
                     <div>
                         <AddMovie handleAddMovie={this.handleAddMovie.bind(this)}/>
+                    </div>
+                    <div>
+                        <h3 className="headers">Fetching real data</h3>
+                        <RealDataMovieList/>
                     </div>
                 </div>
             </div>
