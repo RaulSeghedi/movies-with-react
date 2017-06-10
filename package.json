@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "es6-promise": "^4.1.0",
+    "es6-promise-polyfill": "^1.2.0",
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.5.3",
     "react-bootstrap": "^0.30.9",
     "react-dom": "^15.5.3",
-    "uuid": "^3.0.1"
+    "react-fetch": "0.0.9",
+    "uuid": "^3.0.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"

@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import './RealDataMovieList.css';
+import 'isomorphic-fetch';
+import 'whatwg-fetch';
+import 'es6-promise';
 
 const REQUEST_URL = `https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json`;
 
@@ -7,17 +10,28 @@ class RealDataMovieList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            movies: null,
+            // movies: null,
+            requestFailed: false
         };
     }
 
     componentDidMount() {
         fetch(REQUEST_URL)
+            .then(response => {
+                if (!response.ok) {
+                    throw Error('Request failed !');
+                }
+                return response;
+            })
             .then((response) => response.json())
             .then((responseData) => {
                 this.setState({
                     movies: responseData.movies
                 });
+            }, () => {
+            this.setState({
+                requestFailed: true
+            })
             })
     }
 
@@ -46,6 +60,7 @@ class RealDataMovieList extends Component {
     }
 
     render() {
+        if (this.state.requestFailed) return <p>Failed</p>;
         if (!this.state.movies) {
             return this.renderLoadingView();
         }
