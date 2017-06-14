@@ -45,7 +45,8 @@ class RealDataMovieList extends Component {
         return (
             <div className="real-data-movie">
                 <div>
-                    <img src={movie.posters.thumbnail} alt="" width="55" height='75'/>
+                    <img src='https://pablopi.files.wordpress.com/2012/02/imdb-iphone.png'
+                         alt="" width="100" height='75'/>
                 </div>
                 <div>
                     <div>
