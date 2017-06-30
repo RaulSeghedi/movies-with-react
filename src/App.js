@@ -10,7 +10,7 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            filterMovies: []
+            filterMovies: [],
         };
     }
 
@@ -27,12 +27,18 @@ class App extends Component {
         }
     }
 
+
+
     handleMovieFilter(title) {
         let movie = JSON.parse(localStorage.getItem('storedMovie'));
         let filterMovies = movie.filter((movie) => {
             return movie.title.toLowerCase().indexOf(title.toLowerCase()) !== -1; // -1 = any value that it can not find
         });
         this.setState({filterMovies: filterMovies});
+    }
+
+    searchMovie(event) {
+        this.handleMovieFilter(event.target.value);
     }
 
     handleAddMovie(input) {
@@ -70,7 +76,7 @@ class App extends Component {
                 </div>
                 <div className="main">
                     <div>
-                        <Search handleMovieFilter={this.handleMovieFilter.bind(this)}/>
+                        <Search searchMovie={this.searchMovie.bind(this)}/>
                         <MoviesList filterMovies={this.state.filterMovies} handleDelete={this.handleDelete.bind(this)}/>
                     </div>
                     <div>
